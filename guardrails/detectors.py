@@ -10,6 +10,7 @@ import base64
 import binascii
 import re
 import time
+import zlib
 from typing import Callable
 
 from .models import CheckKind, Verdict
@@ -152,7 +153,7 @@ class HashedEmbedding:
         vec = [0.0] * self.dim
         for i in range(0, max(1, len(key) - self.ngram + 1), max(1, len(key) // self.dim)):
             gram = key[i : i + self.ngram]
-            h = hash(gram) & 0xFFFFFFFF
+            h = zlib.crc32(gram.encode()) & 0xFFFFFFFF
             vec[h % self.dim] += 1.0
         norm = (sum(v * v for v in vec) ** 0.5) or 1.0
         return [v / norm for v in vec]

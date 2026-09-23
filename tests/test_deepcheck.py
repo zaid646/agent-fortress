@@ -48,7 +48,7 @@ def test_watch_tier_only_runs_deep_on_ambiguous(monkeypatch):
             return Verdict.allow(CheckKind.DEEP, check="deep_classifier", reason="safe")
 
     fake = FakeDeep()
-    fortress = Fortress(deep=fake, similarity_threshold=0.9, watch_threshold=0.42)
+    fortress = Fortress(deep=fake, similarity_threshold=0.9, watch_threshold=0.30)
     # benign text: low similarity to any attack prototype -> never hits the model
     v = fortress.check_input("What is the company travel policy?")
     assert v.allowed and fake.calls == 0
