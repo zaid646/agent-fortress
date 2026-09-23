@@ -422,6 +422,29 @@ scrape config in `metrics/prometheus/prometheus.yml`) scrapes it, and Grafana
   access and binds `http_addr=127.0.0.1`. Launch command:
   `grafana server --homepath=/opt/grafana --config /workspace/grafana.ini`.
 
+### Screenshots
+
+**Live dashboard (Grafana)** — the landing view of a bench run: block rate
+(100% RAG / 100% agentic), naked attack success rate (83.3% RAG / 100%
+agentic), false-positive rate (8.3%) and guardrail-overhead p95 (~145 ms),
+all streaming from the Prometheus scrape of the probe.
+
+![Agent Fortress — Live Red-Team Bench (Grafana dashboard)](evidence/01-grafana/dashboard.png)
+
+**Suite gauges (Prometheus)** — the end-of-run gauges as instant queries:
+`af_block_rate` holds at 1.0 across both targets, `af_attack_success_rate`
+shows the naked-target exposure the fortress removes, and
+`af_false_positive_rate` quantifies the conservative classifier's cost.
+
+![Prometheus gauges: block rate / attack success rate / false-positive rate](evidence/03-prometheus/graph_block_rate.png)
+
+**p95 latency, naked vs fortified (Prometheus)** —
+`histogram_quantile(0.95, af_probe_latency_seconds)`: the RAG path stays in
+single-digit milliseconds fortified, while the agentic path shows the
+ShieldGemma deep-guard tail (~287 ms) that runs *only* on watch-tier traffic.
+
+![Prometheus p95 latency histogram, naked vs fortified per target](evidence/03-prometheus/graph_p95_latency.png)
+
 ### Prometheus metric reference
 
 All metrics are prefixed `af_` so they never collide with host metrics.
@@ -544,6 +567,12 @@ travels with the repo. See `evidence/README.md` for an index:
 | `02-suite/` | rendered report screenshot, Locust load-test stats |
 | `03-prometheus/` | scrape-targets page, gauge graphs, p95-latency histogram graph |
 | `04-live/` | real traffic transcript: ingress/egress/deep blocks, benign allows, ShieldGemma verdicts, vLLM model list, live gauges |
+
+**Security report (`report/report.html`)** — the per-test verdict table rendered
+by the runner: attack type, naked vs fortified outcome, defeating layer and
+latency for all 11 catalog tests, plus the summary metrics shown above.
+
+![Agent Fortress security report (report/report.html)](evidence/02-suite/report.html.png)
 
 ---
 

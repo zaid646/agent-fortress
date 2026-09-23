@@ -7,9 +7,6 @@ venv/
 *.log
 .pytest_cache/
 .ruff_cache/
-report/*.json
-!report/.gitkeep
-report/*.html
 data/sandbox/
 *.pem
 *.key
