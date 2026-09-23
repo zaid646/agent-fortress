@@ -4,11 +4,9 @@ Automated **red-teaming** + **production guardrail** framework for **RAG** and
 **agentic** LLM systems, with built-in **observability**.
 
 Use it to :
-(1) find out how an LLM application actually behaves under attack,
-(2) harden it behind a composable, layered firewall, and 
-(3) prove the result
-with numbers — attack success rate, block rate, false-positive rate and latency
-overhead — surfaced on live Grafana dashboards and committed as evidence.
+1. Find out how an LLM application actually behaves under attack,
+2. Harden it behind a composable, layered firewall, and
+3. Prove the result with numbers — attack success rate, block rate, false-positive rate and latency overhead — surfaced on live Grafana dashboards and committed as evidence.
 
 ```
 ┌────────────┐   HTTP /probe  ┌───────────────────┐
