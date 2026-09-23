@@ -10,7 +10,7 @@ venv/
 report/*.json
 !report/.gitkeep
 report/*.html
-data/
+data/sandbox/
 *.pem
 *.key
 .cache/
