@@ -16,4 +16,5 @@ data/
 .cache/
 .uv-cache/
 .uv-python/
-*.pyc.DS_Store
+*.pyc
+.DS_Store
