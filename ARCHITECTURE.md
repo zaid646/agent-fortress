@@ -50,10 +50,12 @@ LangGraph/LangChain/FastAPI app: `check_input → run → check_tool* → check_
 └─────────────────────────────────────────────────────────┘
 ```
 
-The deep classifier (e.g. ShieldGemma-9B served via vLLM) is **off the happy
-path** — only traffic the cheap layers already flagged as suspicious is sent for
-model review, which is how p50 stays under the budget. It is fail-closed: if it
-is configured but unreachable, the fortress blocks rather than falls through.
+The deep classifier (ShieldGemma by default — either a gated `-it` variant via
+vLLM or the open base model via the bundled transformers service) is **off the
+happy path** — only traffic the cheap layers already flagged as suspicious is
+sent for model review, which is how p50 stays under the budget. It is
+fail-closed: if it is configured but unreachable (or its output cannot be
+parsed), the fortress blocks rather than falls through.
 
 ## Why determinism matters
 
@@ -90,10 +92,13 @@ layer fired so the defense story is auditable.
 
 ## Telemetry & evidence
 
-- Prometheus counters/histograms: `agent_fortress_probe_total{target,mode,result}`,
-  `probe_latency_seconds`, `attacks_total`, `blocks_total`, per-layer
-  `block_layer_total`, plus `attack_success_rate`, `block_rate`,
-  `false_positive_rate`, `guardrail_overhead_ms` gauges baked at suite end.
+- Prometheus counters/histograms (all `af_*`): `af_probe_latency_seconds{target,mode}`,
+  `af_ingress_checks_total{verdict,check}`, `af_tool_checks_total{verdict,check}`,
+  `af_egress_checks_total{verdict,check}`, `af_deep_checks_total{verdict}`,
+  `af_attacks_total{attack_type,outcome}`, `af_blocks_total{layer}`, plus the
+  `af_attack_success_rate{target}`, `af_block_rate{target}`,
+  `af_false_positive_rate`, `af_guardrail_overhead_ms` gauges baked at suite
+  end and published via `POST /metrics/suite`.
 - Grafana dashboards are auto-provisioned (`dashboard/grafana/*`); screenshots
   are saved to `evidence/` (plain desktop or Playwright-driven) and committed.
 - `report/report.json` is machine-readable; `report/report.html` is self-contained.
