@@ -1,0 +1,132 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 1948.0
+python_gc_objects_collected_total{generation="1"} 338.0
+python_gc_objects_collected_total{generation="2"} 46.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 360.0
+python_gc_collections_total{generation="1"} 32.0
+python_gc_collections_total{generation="2"} 2.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="14",version="3.12.14"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 3.08834304e+08
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 1.15109888e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79017426467e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 1.6700000000000002
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 16.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1024.0
+# HELP af_ingress_checks_total Ingress checks by verdict/check
+# TYPE af_ingress_checks_total counter
+# HELP af_egress_checks_total Egress checks by verdict/check
+# TYPE af_egress_checks_total counter
+# HELP af_tool_checks_total Tool checks by verdict/check
+# TYPE af_tool_checks_total counter
+# HELP af_deep_checks_total Deep LLM checks by verdict
+# TYPE af_deep_checks_total counter
+# HELP af_probe_latency_seconds End-to-end probe latency seconds
+# TYPE af_probe_latency_seconds histogram
+af_probe_latency_seconds_bucket{le="0.001",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.005",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.01",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.025",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.05",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.1",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.25",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="0.5",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="1.0",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="2.5",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="5.0",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_bucket{le="+Inf",mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_count{mode="naked",target="rag"} 9.0
+af_probe_latency_seconds_sum{mode="naked",target="rag"} 0.003904505632817745
+af_probe_latency_seconds_bucket{le="0.001",mode="fortified",target="rag"} 3.0
+af_probe_latency_seconds_bucket{le="0.005",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="0.01",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="0.025",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="0.05",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="0.1",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="0.25",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="0.5",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="1.0",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="2.5",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="5.0",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_bucket{le="+Inf",mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_count{mode="fortified",target="rag"} 15.0
+af_probe_latency_seconds_sum{mode="fortified",target="rag"} 0.015999113209545612
+af_probe_latency_seconds_bucket{le="0.001",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.005",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.01",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.025",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.05",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.1",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.25",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.5",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="1.0",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="2.5",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="5.0",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="+Inf",mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_count{mode="naked",target="agentic"} 7.0
+af_probe_latency_seconds_sum{mode="naked",target="agentic"} 0.001708734780550003
+af_probe_latency_seconds_bucket{le="0.001",mode="fortified",target="agentic"} 7.0
+af_probe_latency_seconds_bucket{le="0.005",mode="fortified",target="agentic"} 11.0
+af_probe_latency_seconds_bucket{le="0.01",mode="fortified",target="agentic"} 11.0
+af_probe_latency_seconds_bucket{le="0.025",mode="fortified",target="agentic"} 11.0
+af_probe_latency_seconds_bucket{le="0.05",mode="fortified",target="agentic"} 11.0
+af_probe_latency_seconds_bucket{le="0.1",mode="fortified",target="agentic"} 11.0
+af_probe_latency_seconds_bucket{le="0.25",mode="fortified",target="agentic"} 13.0
+af_probe_latency_seconds_bucket{le="0.5",mode="fortified",target="agentic"} 14.0
+af_probe_latency_seconds_bucket{le="1.0",mode="fortified",target="agentic"} 14.0
+af_probe_latency_seconds_bucket{le="2.5",mode="fortified",target="agentic"} 14.0
+af_probe_latency_seconds_bucket{le="5.0",mode="fortified",target="agentic"} 14.0
+af_probe_latency_seconds_bucket{le="+Inf",mode="fortified",target="agentic"} 14.0
+af_probe_latency_seconds_count{mode="fortified",target="agentic"} 14.0
+af_probe_latency_seconds_sum{mode="fortified",target="agentic"} 0.5653035882860422
+# HELP af_probe_latency_seconds_created End-to-end probe latency seconds
+# TYPE af_probe_latency_seconds_created gauge
+af_probe_latency_seconds_created{mode="naked",target="rag"} 1.7901742882686436e+09
+af_probe_latency_seconds_created{mode="fortified",target="rag"} 1.7901742882744718e+09
+af_probe_latency_seconds_created{mode="naked",target="agentic"} 1.7901742891013112e+09
+af_probe_latency_seconds_created{mode="fortified",target="agentic"} 1.7901742892415996e+09
+# HELP af_attacks_total Attacks executed by attack type and outcome
+# TYPE af_attacks_total counter
+# HELP af_blocks_total Fortress blocks by defeating layer
+# TYPE af_blocks_total counter
+af_blocks_total{layer="ingress"} 7.0
+af_blocks_total{layer="egress"} 8.0
+# HELP af_blocks_created Fortress blocks by defeating layer
+# TYPE af_blocks_created gauge
+af_blocks_created{layer="ingress"} 1.7901742882745333e+09
+af_blocks_created{layer="egress"} 1.7901742882866976e+09
+# HELP af_attack_success_rate ASR against the naked target (higher = weaker)
+# TYPE af_attack_success_rate gauge
+af_attack_success_rate{target="rag"} 0.8333
+af_attack_success_rate{target="agentic"} 1.0
+# HELP af_block_rate Fraction of attacks blocked on the fortified target
+# TYPE af_block_rate gauge
+af_block_rate{target="rag"} 1.0
+af_block_rate{target="agentic"} 1.0
+# HELP af_false_positive_rate Benign traffic blocked by the fortress
+# TYPE af_false_positive_rate gauge
+af_false_positive_rate 0.0833
+# HELP af_guardrail_overhead_ms p50/p95 fortress overhead in ms
+# TYPE af_guardrail_overhead_ms gauge
+af_guardrail_overhead_ms 144.845

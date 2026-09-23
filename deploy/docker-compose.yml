@@ -1,0 +1,39 @@
+services:
+  probe:
+    image: python:3.12-slim
+    working_dir: /app
+    command: >
+      sh -c "pip install -e . --quiet &&
+             uvicorn target.app:create_app --factory --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    environment:
+      AF_CATALOG: /app/attacks/catalog.yaml
+      AF_REPORT: /app/report
+      AF_CORPUS: /app/data/corpus
+      AF_TARGET_WS: /app/data/sandbox
+    volumes:
+      - ./:/app
+
+  prometheus:
+    image: prom/prometheus:latest
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./metrics/prometheus:/etc/prometheus
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./dashboard/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
+      - ./dashboard/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml:ro
+      - ./dashboard/grafana:/etc/grafana/provisioning/dashboards/dashboards:ro
