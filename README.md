@@ -169,7 +169,7 @@ calls: `check_input → run → check_tool* → check_output`.
 │   sensitive_output tools → require egress verification  │
 ├─────────────────────────────────────────────────────────┤
 │ EGRESS    check_output(text)                            │
-│   PII rules (SSN, cards, emails, credentials patterns)   │
+│   PII rules (SSN, cards, emails, credentials patterns)  │
 │   exact sensitive-term blocklist (red-team watermarks)  │
 └─────────────────────────────────────────────────────────┘
 ```
